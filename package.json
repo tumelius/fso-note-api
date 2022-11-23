@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf build && cd ../notes-frontend/ && npm run build && cp -r build ../notes-backend/",
+    "deploy": "git add . && git commit -m 'new deploy' && git push origin main",
+    "deploy:full": "npm run build:ui && npm run deploy"
   },
   "author": "TP",
   "license": "MIT",
