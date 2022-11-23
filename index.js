@@ -53,6 +53,20 @@ app.delete('/api/notes/:id', (request, response) => {
   response.status(204).end()
 })
 
+app.put('/api/notes/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const note = request.body
+  note.id = id
+  
+  notes = notes.map(note => {
+    if (note.id === id) {
+      note.important = !note.important
+    }
+    return note
+  })
+  response.json(note)
+})
+
 
 const generateId = () => {
   const maxId = notes.length > 0
